@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom right, rgb(135, 135, 170), rgb(3, 3, 110), rgb(84, 101, 179));
+}
+
+.container {
+    background: linear-gradient(150deg, rgb(105, 105, 148), rgb(3, 3, 110));
+    color: white;
+    width: 800px;
+    border-radius: 10px;
+    padding: 3px;
+    position: absolute;
+    text-shadow: 0, 0, 2px rgb(0, 0, 0, 0.10);
+    box-shadow: 0, 0, 10px rgb(0, 0, 0, 1);
+}
+
+.container .input-box {
+    z-index: 999;
+    opacity: 0;
+    position: absolute;
+}
+
+.content-box .text-content {
+    max-width: 800px;
+    max-height: 255px;
+    overflow-y: auto;
+}
+
+.content-box .text-content::-webkit-scrollbar {
+    width: 0;
+}
+
+.content-box .text-content p {
+    text-align: justify;
+    font-size: 23px;
+    letter-spacing: 1px;
+    word-break: break-all;
+}
+
+.content-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 300px;
+}
+
+.content-box .side-content {
+    display: flex;
+    align-items: center;
+    justify-content: column;
+    width: 17px;
+    text-align: center;
+    line-height: 28px;
+}
+
+.side-content .side-info {
+    padding: 19px;
+    border-radius: 10px;
+    background: linear-gradient(150deg, rgb(105, 105, 148), rgb(3, 3, 110));
+    display: block;
+    text-shadow: 0 0 2px rgb(0, 0, 0, 0.10);
+    box-shadow: rgb(0, 0, 0, 1);
+}
+
+.side-content .side-info li {
+    border-bottom: 1px solid #ccc;
+    list-style: none;
+}
+
+.content .result li:last-child {
+    border-bottom: none;
+}
+
+.side-info li.time,
+.side-info li.errors,
+.side-info li.cpm,
+.side-info li .wpm {
+    font-size: 17px;
+}
+
+.side-info li.time p,
+.side-info li.errors p,
+.side-info li.cpm p,
+.side-info li .wpm p {
+    font-weight: 600;
+}
+
+.container button {
+    width: 71%;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: linear-gradient(150deg, rgb(115, 115, 156), rgb(3, 3, 110));
+    margin-left: 150px;
+}
+
+.container button:hover {
+    background: rgb(rgb(115, 115, 156));
+}
+
+.text-content p span.correct {
+    color: rgb(115, 115, 156);
+}
+
+.text-content p span.correct {
+    color: rgb(60, 60, 99);
+}
+
+.text-content p span.active {
+    color: #979494;
+}
+
+.text-content p span.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background: #9af9;
+    animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 1;
+    }
+}
+
+.text-content p span {
+    position: relative;
+}
