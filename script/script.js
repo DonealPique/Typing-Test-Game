@@ -135,13 +135,16 @@ function showNextParagraph() {
     timeLeft += 10;
     timeTag.innerText = timeLeft;
     randomParagraph();
+    characterIndex = 0;
+    clearInterval(timer);
+    isTyping = 0;
 }
 
 function initTyping(event) {
     const characters = typing_text.querySelectorAll('span');
     let typedCharacter = inputField.value.split("")[characterIndex];
 
-    if (characterIndex < characters.length - 1 && timeLeft > 0) {
+    if ((characterIndex < characters.length - 1 && timeLeft > 0) || (characterIndex === characters.length - 1 && timeLeft > 0)) {
         if (!isTyping) {
             timer = setInterval(initTimer, 1000);
             isTyping = true;
@@ -175,12 +178,15 @@ function initTyping(event) {
         let wpm = Math.round((((characterIndex - errors) / 5) / (maxTime - timeLeft)) * 60);
         wpm = wpm < 0 || !wpm || wpm === Infinity ? 0 : wpm;
         wpmTag.innerText = wpm;
-    } else {
-        inputField.value = "";
-        clearInterval(timer);
-        showNextParagraph();
-    } 
-    {
+
+        if (characterIndex === characters.length - 1) {
+            showNextParagraph();
+        }
+
+        if (timeLeft === 0) {
+            clearInterval(timer);
+            gameOver();
+        }
     }
 }
 
@@ -192,6 +198,7 @@ function initTimer() {
         timeTag.innerText = timeLeft;
     } else {
         clearInterval(timer);
+        timeTag.innerText = "Game Over";
     }
 }
 
